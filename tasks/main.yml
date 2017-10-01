@@ -35,6 +35,7 @@
     timeout: 1
   register: cassandra_non_ssl_port_status
   ignore_errors: yes
+  when: cass_secure is not defined or cass_secure | bool == false
 
 - name: Cassandra SSL Gossip port connectivity status
   delegate_to: '{{ inventory_hostname }}'
@@ -44,4 +45,5 @@
     timeout: 1
   register: cassandra_ssl_port_status
   ignore_errors: yes
+  when: cass_secure | default(false)
 
