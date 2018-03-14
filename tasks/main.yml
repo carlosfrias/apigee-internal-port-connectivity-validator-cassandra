@@ -16,7 +16,6 @@
     host: '{{ private_address }}'
     timeout: 1
   register: cassandra_jmx_port_status
-  ignore_errors: yes
 
 - name: Cassandra CQL Native Transport port connectivity status
   delegate_to: '{{ inventory_hostname }}'
